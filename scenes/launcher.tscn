@@ -1,0 +1,160 @@
+[gd_scene load_steps=12 format=3 uid="uid://dy02m4vsjfj7t"]
+
+[ext_resource type="PackedScene" uid="uid://bejxf7082qijc" path="res://scenes/1_weightconverter.tscn" id="1_gfw3m"]
+[ext_resource type="Script" path="res://scenes/weightconverter.gd" id="2_3xao3"]
+[ext_resource type="Texture2D" uid="uid://j5n6geo7mc1u" path="res://assets/images/backgrounds/weightconverter_text.png" id="3_6qxar"]
+[ext_resource type="Texture2D" uid="uid://btm52caw547a4" path="res://assets/images/details/logo_full.png" id="4_adndf"]
+[ext_resource type="Texture2D" uid="uid://dycgq5lxb0lrd" path="res://assets/images/buttons/exit.png" id="5_oam7y"]
+[ext_resource type="Texture2D" uid="uid://dgn70xm8cfmmp" path="res://assets/images/buttons/github.png" id="6_goi3b"]
+[ext_resource type="Texture2D" uid="uid://b5oro5pntje88" path="res://assets/images/buttons/delete.png" id="7_k4uyh"]
+[ext_resource type="Texture2D" uid="uid://dscjgqnxmf5e4" path="res://assets/images/buttons/download.png" id="7_pi3xw"]
+[ext_resource type="FontFile" uid="uid://cb744mm8xlhqh" path="res://assets/others/baristo font/Baristo.otf" id="8_8rja3"]
+[ext_resource type="AudioStream" uid="uid://dlrk4sv4y104u" path="res://assets/audios/button_clicking.mp3" id="8_kg14o"]
+[ext_resource type="Script" path="res://scenes/global_script.gd" id="9_70uge"]
+
+[node name="Launcher" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1_weightconverter" parent="." instance=ExtResource("1_gfw3m")]
+layout_mode = 1
+script = ExtResource("2_3xao3")
+
+[node name="background" type="TextureRect" parent="1_weightconverter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6qxar")
+
+[node name="logo_full" type="TextureRect" parent="1_weightconverter"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 49.0
+texture = ExtResource("4_adndf")
+expand_mode = 2
+
+[node name="buttons" type="Control" parent="1_weightconverter"]
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 96.0
+offset_right = 511.0
+offset_bottom = 312.0
+
+[node name="bt_exit" type="Control" parent="1_weightconverter/buttons"]
+anchors_preset = 0
+offset_left = 952.0
+offset_top = -93.0
+offset_right = 997.0
+offset_bottom = -48.0
+
+[node name="TextureRect" type="TextureRect" parent="1_weightconverter/buttons/bt_exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_oam7y")
+expand_mode = 2
+
+[node name="bt_github" type="Control" parent="1_weightconverter/buttons"]
+anchors_preset = 0
+offset_left = 915.0
+offset_top = 466.0
+offset_right = 996.0
+offset_bottom = 547.0
+
+[node name="TextureRect" type="TextureRect" parent="1_weightconverter/buttons/bt_github"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_goi3b")
+expand_mode = 2
+
+[node name="bt_delete" type="Control" parent="1_weightconverter/buttons"]
+visible = false
+anchors_preset = 0
+offset_left = 286.0
+offset_top = 400.0
+offset_right = 367.0
+offset_bottom = 481.0
+
+[node name="TextureRect" type="TextureRect" parent="1_weightconverter/buttons/bt_delete"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_k4uyh")
+expand_mode = 2
+
+[node name="bt_action" type="Control" parent="1_weightconverter/buttons"]
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 400.0
+offset_right = 285.0
+offset_bottom = 481.0
+
+[node name="TextureRect" type="TextureRect" parent="1_weightconverter/buttons/bt_action"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_pi3xw")
+expand_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="1_weightconverter/buttons/bt_action"]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 82.0
+offset_right = 205.0
+offset_bottom = 87.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="1_weightconverter"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.5
+offset_top = 26.0
+offset_right = 70.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_8rja3")
+text = "version"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="audios" type="Node" parent="."]
+
+[node name="audio2D_clicking" type="AudioStreamPlayer2D" parent="audios"]
+stream = ExtResource("8_kg14o")
+
+[node name="global_script" type="Node" parent="."]
+script = ExtResource("9_70uge")
+
+[connection signal="gui_input" from="1_weightconverter/buttons/bt_exit" to="global_script" method="_on_bt_exit_gui_input"]
+[connection signal="gui_input" from="1_weightconverter/buttons/bt_github" to="global_script" method="_on_bt_github_gui_input"]
+[connection signal="gui_input" from="1_weightconverter/buttons/bt_delete" to="1_weightconverter" method="_on_bt_delete_gui_input"]
+[connection signal="gui_input" from="1_weightconverter/buttons/bt_action" to="1_weightconverter" method="_on_bt_action_gui_input"]
